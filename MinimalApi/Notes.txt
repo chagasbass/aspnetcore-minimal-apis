@@ -1,0 +1,23 @@
+MINIMAL APIS
+
+-> Criada por questão de performance
+-> Os Conceitos de web api ainda estão dentro dos conceitos do MVC
+
+-> O "warm up" do node é mais rapido q o aspnet core mas o aspnet core é mais performático
+-> Para aplicações functions esse warm up é ruim
+
+* Quanto mais mínima é melhor
+* Warm up Melhor
+* Usar aplicações aspnet em situações em que se usaria Servless (functions)
+
+Quando Usar?
+
+* Warm up Rápidos
+* Em cenários de utilização de serviços Functions
+* Em cenários de microserviços bem pequenos simples
+* Sem views, Sem Startups
+
+#################################################################################################
+
+-> Organização
+-> Validação de modelos
