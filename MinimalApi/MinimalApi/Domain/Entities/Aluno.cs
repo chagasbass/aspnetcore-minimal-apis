@@ -4,13 +4,14 @@
     {
         public Guid Id { get; private set; }
         public string? Nome { get; private set; }
-        public string? Documento { get; private set; }
+        public string? Email { get; private set; }
         public bool Ativo { get; private set; }
 
-        public Aluno(string? nome, string? documento)
+        public Aluno(string? nome, string? email)
         {
             Nome = nome;
-            Documento = documento;
+            Email = email;
+            Ativo = true;
         }
 
         public Aluno AlterarNome(string? nome)
@@ -19,9 +20,9 @@
             return this;
         }
 
-        public Aluno AlterarDocumento(string? documento)
+        public Aluno AlterarEmail(string? email)
         {
-            Documento = documento;
+            Email = email;
             return this;
         }
 

@@ -22,7 +22,7 @@ namespace MinimalApi.ApplicationServices.Services
                 return Guid.Empty;
 
             alunoExistente.AlterarNome(atualizarAlunoDto.Nome)
-                          .AlterarDocumento(atualizarAlunoDto.Documento)
+                          .AlterarEmail(atualizarAlunoDto.Email)
                           .AlterarStatusDeAluno(atualizarAlunoDto.Ativo);
 
             await _alunoRepository.AtualizarAlunoAsync(alunoExistente);
@@ -42,9 +42,9 @@ namespace MinimalApi.ApplicationServices.Services
             return id;
         }
 
-        public async Task<IEnumerable<ListarAlunoDto>> ListarAlunosAsync()
+        public async Task<IEnumerable<ListarAlunoDto>> ListarAlunosAsync(bool estaAtivo)
         {
-            var alunos = await _alunoRepository.ListarAlunosAsync();
+            var alunos = await _alunoRepository.ListarAlunosAsync(estaAtivo);
 
             var alunosDto = new List<ListarAlunoDto>();
 
@@ -56,7 +56,7 @@ namespace MinimalApi.ApplicationServices.Services
                     {
                         Id = aluno.Id,
                         Nome = aluno.Nome,
-                        Documento = aluno.Documento
+                        Email = aluno.Email
                     });
                 }
             }
@@ -74,7 +74,7 @@ namespace MinimalApi.ApplicationServices.Services
                 {
                     Id = aluno.Id,
                     Nome = aluno.Nome,
-                    Documento = aluno.Documento
+                    Email = aluno.Email
                 };
             }
 
@@ -83,8 +83,7 @@ namespace MinimalApi.ApplicationServices.Services
 
         public async Task<Guid> SalvarAlunosAsync(InserirAlunoDto inserirAlunoDto)
         {
-            var novoAluno = new Aluno(inserirAlunoDto.Nome, inserirAlunoDto.Documento);
-
+            var novoAluno = new Aluno(inserirAlunoDto.Nome, inserirAlunoDto.Email);
 
             await _alunoRepository.SalvarAlunosAsync(novoAluno);
 

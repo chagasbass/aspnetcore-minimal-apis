@@ -4,7 +4,7 @@ namespace MinimalApi.ApplicationServices.Contracts
 {
     public interface IAlunoApplicationServices
     {
-        Task<IEnumerable<ListarAlunoDto>> ListarAlunosAsync();
+        Task<IEnumerable<ListarAlunoDto>> ListarAlunosAsync(bool estaAtivo);
         Task<ListarAlunoDto> ListarAlunosAsync(Guid id);
         Task<Guid> SalvarAlunosAsync(InserirAlunoDto inserirAlunoDto);
         Task<Guid> AtualizarAlunoAsync(AtualizarAlunoDto atualizarAlunoDto);

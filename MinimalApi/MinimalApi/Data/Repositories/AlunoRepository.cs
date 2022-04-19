@@ -23,22 +23,22 @@ namespace MinimalApi.Data.Repositories
 
         }
 
-        public async Task<Guid> ExcluirAlunoAsync(Aluno aluno)
+        public async Task<Aluno> ExcluirAlunoAsync(Aluno aluno)
         {
             _context.Alunos.Remove(aluno);
             await _context.SaveChangesAsync();
 
-            return aluno.Id;
+            return aluno;
         }
 
-        public async Task<IEnumerable<Aluno>> ListarAlunosAsync()
+        public async Task<IEnumerable<Aluno>> ListarAlunosAsync(bool estaAtivo)
         {
-            return await _context.Alunos.AsNoTracking().ToListAsync();
+            return await _context.Alunos.AsNoTracking().Where(x => x.Ativo == estaAtivo).ToListAsync();
         }
 
         public async Task<Aluno> ListarAlunosAsync(Guid id)
         {
-            return await _context.Alunos.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Alunos.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Aluno> SalvarAlunosAsync(Aluno aluno)

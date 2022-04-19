@@ -5,7 +5,7 @@ namespace MinimalApi.Extensions
 {
     public static class DbContextExtensions
     {
-        public static IServiceCollection ConfigureDbContextInMemory(this IServiceCollection services)
+        public static IServiceCollection AddDbContextInMemory(this IServiceCollection services)
         {
             services.AddDbContext<MinimalApiDataContext>(opt => opt.UseInMemoryDatabase("DbMinimalApi"));
 

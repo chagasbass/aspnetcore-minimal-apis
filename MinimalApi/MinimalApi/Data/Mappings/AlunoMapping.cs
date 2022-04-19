@@ -14,17 +14,17 @@ namespace MinimalApi.Data.Mappings
             builder.Property(x => x.Nome)
                    .IsRequired()
                    .HasColumnName("NOME_ALUNO")
-                   .HasColumnType("varchar(200");
+                   .HasColumnType("varchar(200)");
 
             builder.Property(x => x.Nome)
                   .IsRequired()
                   .HasColumnName("NOME_ALUNO")
-                  .HasColumnType("varchar(200");
+                  .HasColumnType("varchar(200)");
 
-            builder.Property(x => x.Documento)
+            builder.Property(x => x.Email)
                   .IsRequired()
-                  .HasColumnName("DOCUMENTO_ALUNO")
-                  .HasColumnType("varchar(14)");
+                  .HasColumnName("EMAIL_ALUNO")
+                  .HasColumnType("varchar(30)");
 
             builder.Property(x => x.Ativo)
                  .IsRequired()

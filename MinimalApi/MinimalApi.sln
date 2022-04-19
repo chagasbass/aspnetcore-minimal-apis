@@ -5,10 +5,11 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D950E2B-6B7A-4204-8A58-04F4A68717C8}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		Notes.txt = Notes.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi", "MinimalApi\MinimalApi.csproj", "{261E6EF0-935E-4A7A-B938-A288D3AB0251}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalApi", "MinimalApi\MinimalApi.csproj", "{261E6EF0-935E-4A7A-B938-A288D3AB0251}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
