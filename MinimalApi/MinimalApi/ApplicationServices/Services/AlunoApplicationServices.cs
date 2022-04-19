@@ -30,6 +30,18 @@ namespace MinimalApi.ApplicationServices.Services
             return alunoExistente.Id;
         }
 
+        public async Task<Guid> ExcluirAlunoAsync(Guid id)
+        {
+            var alunoExistente = await _alunoRepository.ListarAlunosAsync(id);
+
+            if (alunoExistente is null)
+                return Guid.Empty;
+
+            await _alunoRepository.ExcluirAlunoAsync(alunoExistente);
+
+            return id;
+        }
+
         public async Task<IEnumerable<ListarAlunoDto>> ListarAlunosAsync()
         {
             var alunos = await _alunoRepository.ListarAlunosAsync();

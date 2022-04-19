@@ -5,7 +5,7 @@ using MinimalApi.Domain.Repositories;
 
 namespace MinimalApi.Extensions
 {
-    public static class MinialApiDIExtensions
+    public static class MinimalApiDIExtensions
     {
         public static IServiceCollection ConfigureDependencyInjection(this IServiceCollection services)
         {

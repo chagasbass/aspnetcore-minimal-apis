@@ -8,5 +8,6 @@ namespace MinimalApi.Domain.Repositories
         Task<Aluno> ListarAlunosAsync(Guid id);
         Task<Aluno> SalvarAlunosAsync(Aluno aluno);
         Task<Aluno> AtualizarAlunoAsync(Aluno aluno);
+        Task<Guid> ExcluirAlunoAsync(Aluno aluno);
     }
 }

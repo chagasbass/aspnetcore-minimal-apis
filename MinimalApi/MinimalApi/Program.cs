@@ -91,6 +91,24 @@ app.MapPut("/alunos", async (
    .WithName("AtualizarAlunosAsync")
    .WithTags("Alunos - Escrita");
 
+app.MapDelete("/alunos", async (
+    Guid alunoId,
+    IAlunoApplicationServices alunoApplicationServices) =>
+
+{
+
+    var id = await alunoApplicationServices.ExcluirAlunoAsync(alunoId);
+
+    return id != Guid.Empty
+     ? Results.Ok("Aluno excluído com sucesso.")
+     : Results.BadRequest("O aluno não existe.");
+})
+   .ProducesValidationProblem()
+   .Produces(StatusCodes.Status204NoContent)
+   .Produces(StatusCodes.Status400BadRequest)
+   .WithName("ExcluirAlunosAsync")
+   .WithTags("Alunos - Escrita");
+
 #endregion
 
 app.Run();

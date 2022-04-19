@@ -8,5 +8,6 @@ namespace MinimalApi.ApplicationServices.Contracts
         Task<ListarAlunoDto> ListarAlunosAsync(Guid id);
         Task<Guid> SalvarAlunosAsync(InserirAlunoDto inserirAlunoDto);
         Task<Guid> AtualizarAlunoAsync(AtualizarAlunoDto atualizarAlunoDto);
+        Task<Guid> ExcluirAlunoAsync(Guid id);
     }
 }

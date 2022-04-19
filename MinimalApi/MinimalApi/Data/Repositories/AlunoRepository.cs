@@ -23,6 +23,14 @@ namespace MinimalApi.Data.Repositories
 
         }
 
+        public async Task<Guid> ExcluirAlunoAsync(Aluno aluno)
+        {
+            _context.Alunos.Remove(aluno);
+            await _context.SaveChangesAsync();
+
+            return aluno.Id;
+        }
+
         public async Task<IEnumerable<Aluno>> ListarAlunosAsync()
         {
             return await _context.Alunos.AsNoTracking().ToListAsync();
