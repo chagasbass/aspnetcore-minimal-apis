@@ -27,4 +27,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MinimalApi.Extensions">
+      <HintPath>..\..\MinimalApi.Extensions\bin\Debug\net6.0\MinimalApi.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

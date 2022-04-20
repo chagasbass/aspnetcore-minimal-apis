@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MinimalApi.Extensions
 {
@@ -6,7 +7,6 @@ namespace MinimalApi.Extensions
     {
         public static IServiceCollection AddMinimalApiHttpLogging(this IServiceCollection services)
         {
-            HttpLoggingOptions options = new HttpLoggingOptions();
             services.AddHttpLogging(options =>
             {
                 options.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders |

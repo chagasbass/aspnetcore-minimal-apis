@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace MinimalApi.Extensions
 {
@@ -8,6 +10,7 @@ namespace MinimalApi.Extensions
         {
             var applicationName = configuration["BaseConfiguration:NomeAplicacao"];
             var applicationDescription = configuration["BaseConfiguration:Descricao"];
+            var developerName = configuration["BaseConfiguration:NomeDesenvolvedor"];
 
             #region Criar versões diferentes de rotas
             services.AddSwaggerGen(c =>
@@ -15,7 +18,7 @@ namespace MinimalApi.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = applicationName,
-                    Description = $"{applicationDescription} Developed by Thiago Chagas",
+                    Description = $"{applicationDescription} Developed by {developerName}",
                     License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
                 });
 

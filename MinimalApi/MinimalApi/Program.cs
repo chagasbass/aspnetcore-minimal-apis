@@ -5,22 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 using MinimalApi.ApplicationServices.Contracts;
 using MinimalApi.ApplicationServices.Dtos;
 using MinimalApi.Extensions;
+using MinimalApi.Shared;
 using MiniValidation;
 using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
+var key = Encoding.ASCII.GetBytes(Settings.GetSecret());
+
 builder.Services.AddEndpointsApiExplorer()
                 .AddMinimalApiHttpLogging()
-                .AddOptionsPattern(configuration)
+                .AddBaseConfigurationOptionsPattern(configuration)
                 .AddSwaggerDocumentation(configuration)
                 .AddMinimalApiPerformanceBoost()
                 .AddDbContextInMemory()
                 .AddDependencyInjection()
                 .AddApiVersioning(x => x.DefaultApiVersion = ApiVersion.Default)
-                .AddMinimalApiAuthentication()
+                .AddMinimalApiAuthentication(key)
                 .AddMinimalApiAuthorization();
 
 var app = builder.Build();
