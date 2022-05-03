@@ -80,19 +80,20 @@ void MapAlunoActions(WebApplication app)
         .WithName("ListarAlunosPorIdAsync")
         .WithTags("Alunos - Leitura");
 
-    app.MapPost("/alunos", [Authorize(Roles = "Admin")] async (
-        InserirAlunoDto inserirAlunoDto,
-        IAlunoApplicationServices alunoApplicationServices) =>
-    {
-        if (!MiniValidator.TryValidate(inserirAlunoDto, out var errors))
-            return Results.ValidationProblem(errors);
+    //[Authorize(Roles = "Admin")]
+    app.MapPost("/alunos", async (
+       InserirAlunoDto inserirAlunoDto,
+       IAlunoApplicationServices alunoApplicationServices) =>
+   {
+       if (!MiniValidator.TryValidate(inserirAlunoDto, out var errors))
+           return Results.ValidationProblem(errors);
 
-        var id = await alunoApplicationServices.SalvarAlunosAsync(inserirAlunoDto);
+       var id = await alunoApplicationServices.SalvarAlunosAsync(inserirAlunoDto);
 
-        return id != Guid.Empty
-         ? Results.CreatedAtRoute("ListarAlunosPorIdAsync", new { Id = id })
-         : Results.BadRequest("Problemas ao salvar o aluno");
-    })
+       return id != Guid.Empty
+        ? Results.CreatedAtRoute("ListarAlunosPorIdAsync", new { Id = id })
+        : Results.BadRequest("Problemas ao salvar o aluno");
+   })
        .ProducesValidationProblem()
        .Produces<Guid>(StatusCodes.Status201Created)
        .Produces(StatusCodes.Status400BadRequest)
@@ -208,3 +209,5 @@ void MapAuthActions(WebApplication app)
 
     #endregion
 }
+
+public partial class Program { }

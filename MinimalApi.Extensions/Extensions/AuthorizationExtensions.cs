@@ -5,7 +5,7 @@ namespace MinimalApi.Extensions
 {
     public static class AuthorizationExtensions
     {
-        public static IServiceCollection AddMinimalApiAuthorization(this IServiceCollection services, List<MinimalApiRoles> minimalApiRoles = null)
+        public static IServiceCollection AddMinimalApiAuthorization(this IServiceCollection services, List<MinimalApiRoles> minimalApiRoles)
         {
             if (minimalApiRoles.Any())
             {
@@ -31,3 +31,4 @@ namespace MinimalApi.Extensions
         }
     }
 }
+
